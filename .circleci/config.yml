@@ -4,11 +4,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
-        - dev
-
     docker:
       # specify the version you desire here
       - image: circleci/node:9.7
@@ -50,7 +45,7 @@ jobs:
       - run: sudo ./google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
 
       # rewrite the app.yaml to start prod or dev as needed
-      - run: "[ \"$CIRCLE_BRANCH\" == \"master\" ] && echo \"Do nothing\" || sed -i \"s/web-prod/web-dev/g\" ./app.yaml"
+      - run: "[ \"$CIRCLE_BRANCH\" == \"master\" ] && echo \"Do nothing\" || sed -i \"s/web-prod/web-$CIRCLE_BRANCH/g\" ./app.yaml"
       - run: cat ./app.yaml
 
       # rewrite the package.json to start prod or dev as needed  
