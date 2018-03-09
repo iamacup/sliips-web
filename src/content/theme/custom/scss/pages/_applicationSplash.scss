@@ -1,0 +1,136 @@
+
+/**********************
+    SPLASH PAGE
+**********************/
+
+.p-splash {
+  .gs-button-pad {
+    margin-top: 30px;
+  }
+
+  input {
+    text-align: left;
+  }
+
+  .numbered-list {
+    .list-group {
+      list-style: decimal inside;
+    }
+
+    .list-group-item {
+      display: list-item;
+      border: none;
+      font-size: 18px;
+    }
+  }
+
+  .header-image-container {
+    margin: 0;
+
+    @media (min-width: $screen-md-min) {
+      margin: 0 10%;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      margin: 0 20%;
+    }
+  }
+
+  .profile-image-container {
+    margin: 0 22%;
+
+    @media (min-width: $screen-sm-min) {
+      margin: 0 10%;
+    }
+
+    @media (min-width: $screen-md-min) {
+      margin: 0 10%;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      margin: 0 20%;
+    }
+  }
+
+  .benefit {
+    background-color: $light-purple;
+    border-radius: 18px;
+    padding: 12px;
+    color: #fff;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .fullpage-header-home {
+    text-align: center;
+    color: $text-muted-1;
+    background-color: #fff;
+    padding: 100px 0;
+  }
+
+  .join {
+    padding: 50px 0;
+  }
+
+  .section-heading {
+    margin-top: 0;
+  }
+
+  .call-to-action h2 {
+    margin: 0 auto 20px;
+  }
+
+  .video-fake-container {
+    background-color: #fff;
+    padding: 120px 0 0;
+    border: 1px solid #aaa;
+  }
+
+  .prog-bar-holder {
+    padding: 100px 0 0 20px;
+
+    @media (max-width: $screen-xs-min) {
+      padding: 100px 10px 0 20px;
+    }
+  }
+
+  .carousel-item-container {
+    margin: 0;
+
+    @media (min-width: $screen-md-min) {
+      margin: 0 10%;
+    }
+  }
+
+  ol.carousel-indicators li {
+    border: 1px solid $dark-purple;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    margin: 4px;
+  }
+
+  ol.carousel-indicators li.active {
+    background: $purple;
+  }
+
+  .carousel-indicators {
+    bottom: -60px;
+  }
+
+  .purple-list-group {
+    .list-group-item {
+      background-color: $purple-new-1;
+      color: #fff;
+      border: 1px solid $purple-new-2;
+    }
+
+    a.list-group-item:hover,
+    a.list-group-item:focus,
+    button.list-group-item:hover,
+    button.list-group-item:focus {
+      background-color: $purple-new-2;
+      color: #fff;
+    }
+  }
+}

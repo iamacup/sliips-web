@@ -1,0 +1,205 @@
+
+/**********************
+    Various customer bits
+**********************/
+
+.p-customer {
+  .search-input {
+    border-right: 0;
+    -webkit-box-shadow: none;
+  }
+
+  .search-input:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: #ccc;
+  }
+
+  .search-icon {
+    border-left: 0 solid transparent;
+    background: transparent;
+  }
+
+  /* From the template */
+
+  .x_panel {
+    width: 100%;
+    padding: 10px 17px;
+    display: inline-block;
+    opacity: 1;
+    transition: all 0.2s ease;
+  }
+
+  .pricing_features {
+    padding: 20px 15px;
+    font-size: 13.5px;
+  }
+
+  .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .ui-ribbon-container {
+    position: relative;
+
+    .ui-ribbon-wrapper {
+      position: absolute;
+      overflow: hidden;
+      width: 85px;
+      height: 88px;
+      top: -3px;
+      right: -3px;
+    }
+
+    .ui-ribbon {
+      position: relative;
+      display: block;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      transform: rotate(45deg);
+      padding: 7px 0;
+      left: -5px;
+      top: 15px;
+      width: 120px;
+      line-height: 20px;
+      background-color: $purple;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  @media (min-width: $screen-sm-min) {
+    .price_item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 44px;
+      border-left: 1px solid #adb2b5;
+      margin-top: 10px;
+    }
+
+    .price_item:first-child::before {
+      border-left: 0;
+    }
+  }
+
+  .x_title {
+    border-bottom: 2px solid #e6e9ed;
+    padding: 1px 5px 6px;
+  }
+
+  .x_content {
+    padding: 0 5px 6px;
+    float: left;
+    clear: both;
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .widget_tally_box {
+    .name_title {
+      text-align: center;
+      margin: 5px;
+    }
+  }
+
+  .divider {
+    border-bottom: 1px solid #ddd;
+    margin: 10px;
+  }
+
+  .navbar-default .nav > li > a,
+  .navbar-default .nav > li > a:focus {
+    text-transform: none;
+  }
+
+  .navbar-default .navbar-header .navbar-brand {
+    text-transform: none;
+  }
+
+  .tile_count {
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    .tile_stats_count {
+      margin-bottom: 10px;
+      border-bottom: 0;
+      padding: 0 10px 0 20px;
+      position: relative;
+
+      span {
+        font-size: 13px;
+      }
+
+      .count {
+        font-size: 40px;
+        line-height: 47px;
+        font-weight: 700;
+
+        span {
+          font-size: 20px;
+        }
+      }
+
+      .count_top {
+        font-weight: 700;
+      }
+
+      .count_bottom i {
+        width: 12px;
+      }
+    }
+
+    .tile_stats_count,
+    ul.quick-list li {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tile_stats_count_line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 65px;
+      border-left: 2px solid #adb2b5;
+      margin-top: 0;
+    }
+  }
+
+  .green {
+    color: #1abb9c;
+  }
+
+  .red {
+    color: #e74c3c;
+  }
+
+  .slider {
+    width: 100%;
+  }
+
+  .slider-handle {
+    background-color: $purple;
+    background-image: none;
+  }
+
+  .lock-parent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lock-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(../../../../content/theme/custom/images/lock3.png) no-repeat center;
+    z-index: 10;
+    cursor: pointer;
+  }
+}

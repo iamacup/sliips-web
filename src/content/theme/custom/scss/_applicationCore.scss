@@ -1,0 +1,80 @@
+
+/**********************
+  CORE HTML STUFF
+**********************/
+
+body {
+  font-family: $font;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+@media (max-width: $screen-xs-max) {
+  h1 {
+    font-size: 29px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+}
+
+hr {
+  max-width: 180px;
+  border-color: $purple;
+  border-width: 3px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+iframe {
+  border: 0 none;
+}
+
+a,
+button {
+  color: $purple;
+  transition: all 0.35s;
+  font-weight: 700;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus,
+button:hover,
+button:focus {
+  color: $light-purple;
+  text-decoration: underline;
+}

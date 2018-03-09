@@ -1,0 +1,43 @@
+
+/**********************
+  UTILITY CLASSES (FLEX)
+**********************/
+
+.flex-v-center-xs {
+  @media (min-width: $screen-xs-min) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.flex-v-center-sm {
+  @media (min-width: $screen-sm-min) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.flex-v-center-md {
+  @media (min-width: $screen-md-min) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.flex-v-center-lg {
+  @media (min-width: $screen-lg-min) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.flex-v-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

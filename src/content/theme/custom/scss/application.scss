@@ -1,0 +1,35 @@
+/* import the variables */
+@import 'variables';
+
+/* setup some core stuff */
+@import 'applicationCore';
+
+/* include BS overrides */
+@import 'bootstrap/bootstrap-overrides';
+
+/* add the general classes etc. */
+@import 'applicationGeneral';
+@import 'applicationUtility';
+@import 'applicationUtilityFlex';
+@import 'applicationText';
+
+/* fragments */
+@import 'fragments/tooltips';
+@import 'fragments/footer';
+@import 'fragments/applicationQuestions';
+@import 'fragments/applicationAnswers';
+@import 'fragments/payslipUpload';
+@import 'fragments/animations';
+
+/* pages */
+@import 'pages/applicationCompany';
+@import 'pages/applicationCustomer';
+@import 'pages/applicationDashboards';
+@import 'pages/applicationFAQ';
+@import 'pages/applicationPrivacy';
+@import 'pages/applicationPress';
+@import 'pages/applicationSliipsPoints';
+@import 'pages/applicationSplash';
+
+/* overrides */
+@import 'overrides/select2';

@@ -1,0 +1,87 @@
+
+/**********************
+  TEXT CLASSES
+**********************/
+
+.text-muted {
+  color: $text-muted-1;
+}
+
+.text-light {
+  color: #d7d7d7;
+}
+
+.text-dark {
+  color: $dark-text-color;
+}
+
+.text-purple {
+  color: $purple;
+}
+
+.text-orange {
+  color: $orange;
+}
+
+.text-red {
+  color: $red-ish;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-light-purple {
+  color: $light-purple;
+}
+
+.text-center-xs {
+  @media (max-width: $screen-xs-max) {
+    text-align: center;
+  }
+}
+
+.text-center-sm {
+  @media (max-width: $screen-sm-max) {
+    text-align: center;
+  }
+}
+
+.fa-5x {
+  font-size: 8em;
+}
+
+.textw800 {
+  font-weight: 800;
+}
+
+.textw700 {
+  font-weight: 700;
+}
+
+.textw400 {
+  font-weight: 400;
+}
+
+.textw600 {
+  font-weight: 600;
+}
+
+.text-block {
+  h1,
+  h2,
+  h3 {
+    margin-top: 40px;
+  }
+}
+
+.header-no-margin {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+}

@@ -1,0 +1,156 @@
+
+@import '../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
+
+/**********************
+    BUTTONS
+**********************/
+
+//used on add-sliip page
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+//used on add-sliip page
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.btn {
+  //border: 0;
+  border-radius: 1px;
+  text-transform: uppercase;
+  font-family: $font;
+  font-weight: 700;
+  margin: 6px;
+}
+
+.btn-no-text-transform {
+  text-transform: none;
+}
+
+.btn-block {
+  margin: 6px 0;
+}
+
+.btn-xl {
+  padding: 15px 30px;
+}
+
+.btn-multiline {
+  white-space: normal;
+}
+
+.btn-inline {
+  display: inline;
+}
+
+.btn-purple-1 {
+  //color, background, border
+  @include button-variant($light-text-color, $light-purple, $light-purple);
+
+  transition: all 0.35s;
+}
+
+.btn-purple-2 {
+  //color, background, border
+  @include button-variant($light-text-color, $purple, $purple);
+
+  transition: all 0.35s;
+}
+
+.btn-purple-3 {
+  //color, background, border
+  @include button-variant($light-text-color, $medium-purple, $medium-purple);
+
+  transition: all 0.35s;
+}
+
+.btn-purple-4 {
+  //color, background, border
+  @include button-variant($light-text-color, $dark-purple, $dark-purple);
+
+  transition: all 0.35s;
+}
+
+.btn-orange-1 {
+  //color, background, border
+  @include button-variant($light-text-color, $orange, $orange);
+
+  transition: all 0.35s;
+}
+
+.btn-red-ish-1 {
+  //color, background, border
+  @include button-variant($light-text-color, $red-ish, $red-ish);
+
+  transition: all 0.35s;
+}
+
+.btn-default {
+  //color, background, border
+  background-color: #fff;
+  color: #777;
+  border: 1px solid #d9dee4;
+  transition: all 0.35s;
+}
+
+.btn-default-selected {
+  //color, background, border
+  background-color: #ccc;
+  color: #777;
+  border: 1px solid #d9dee4;
+  transition: all 0.35s;
+}
+
+.btn-white {
+  background-color: #fff;
+  padding: 0;
+}
+
+.btn-no-style {
+  border: none;
+  background: none;
+}
+
+.btn-no-style:active {
+  background: none;
+  box-shadow: none;
+}
+
+.btn-no-underline,
+.btn-no-underline:hover,
+.btn-no-underline:focus {
+  text-decoration: none;
+}
+
+.btn-circle-outline {
+  background-color: transparent;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.btn-circle {
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.btn-circle-total {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 2px;
+}

@@ -1,0 +1,339 @@
+
+/**********************
+  NAVBAR CHANGES
+**********************/
+
+/* This file is a shitshow for the rule no-descending-specificity - needs fixing - probaby on move to BS4 */
+
+/* stylelint-disable no-descending-specificity */
+
+.navbar-default {
+  font-family: $font;
+  border: none;
+  box-shadow: none;
+  transition: all 0.35s;
+  background-color: $dark-purple;
+  background-image: none;
+
+  .fa {
+    color: $light-purple;
+  }
+
+  .navbar-header {
+    .navbar-brand {
+      color: $navbar-brand-color;
+      text-transform: uppercase;
+      font-family: $font;
+      font-weight: 700;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+      color: $light-text-color;
+    }
+  }
+
+  .nav > li > a,
+  .nav > li > a:focus {
+    color: $navbar-non-affix-link-and-hover-color;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .nav > li > a:hover,
+  .nav > li > a:focus:hover {
+    color: $red-ish;
+  }
+
+  .nav > li.active > a,
+  .nav > li.active > a:focus {
+    color: $red-ish;
+    background-color: transparent;
+  }
+
+  .nav > li.active > a:hover,
+  .nav > li.active > a:focus:hover {
+    background-color: transparent;
+  }
+
+  .nav > li > .navbarHilightedLink,
+  .nav > li > .navbarHilightedLink:focus {
+    background-color: $light-purple;
+    color: #fff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 6px;
+    margin: 10px 5px;
+  }
+
+  .nav > li > .navbarHilightedLink:hover,
+  .nav > li > .navbarHilightedLink:focus:hover {
+    background-color: $light-purple;
+    color: $dark-purple;
+  }
+
+  .nav > li.active {
+    @media only screen and (min-width: $screen-sm-min) {
+      border-top: 4px solid $red-ish;
+
+      > a {
+        padding-top: 11px;
+      }
+    }
+  }
+}
+
+.navbar-second {
+  background-color: #fff;
+
+  .navbar-header {
+    .navbar-brand {
+      color: $purple;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+      color: $red-ish;
+    }
+  }
+
+  .nav > li > a,
+  .nav > li > a:focus {
+    color: $navbar-affix-link-color;
+  }
+}
+
+.navbar-default.affix,
+.navbar-always-affix {
+  background-color: $navbar-affix-background;
+  border-bottom: 1px solid $boxBorderColor-2;
+
+  .navbar-header {
+    .navbar-brand {
+      font-size: 18px;
+      color: $purple;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+      color: $red-ish;
+    }
+  }
+
+  .nav > li > a,
+  .nav > li > a:focus {
+    color: $navbar-affix-link-color;
+  }
+
+  .nav > li > a:hover,
+  .nav > li > a:focus:hover {
+    color: $red-ish;
+  }
+
+  .nav > li > .navbarHilightedLink,
+  .nav > li > .navbarHilightedLink:focus {
+    background-color: $light-purple;
+    color: #fff;
+  }
+
+  .nav > li > .navbarHilightedLink:hover,
+  .nav > li > .navbarHilightedLink:focus:hover {
+    background-color: $light-purple;
+    color: $dark-purple;
+  }
+}
+
+.navbar-cookie {
+  background-color: $purple-new-5;
+  border-color: $purple;
+
+  .navbar-left {
+    padding-top: 10px;
+  }
+
+  a:hover,
+  a:focus:hover {
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: $screen-xs-max) {
+    .navbar-left {
+      padding-left: 6px;
+      padding-right: 6px;
+      text-align: center;
+    }
+  }
+}
+
+.navbar-get-started {
+  background-color: $navbar-affix-background;
+  border-top: 1px solid $boxBorderColor-2;
+
+  .navbar-left {
+    float: none !important;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: center;
+  }
+
+  .pagination {
+    margin: 0;
+    margin-top: 3px;
+  }
+
+  .navbar-nav {
+    margin: 2px -15px;
+  }
+}
+
+.navbar-invis {
+  background-color: transparent;
+}
+
+.navbar-border {
+  border-bottom: 1px solid $boxBorderColor-2;
+}
+
+.navbar-no-collapse {
+  .navbar-collapse.collapse {
+    display: block !important;
+  }
+
+  .navbar-nav > li,
+  .navbar-nav {
+    float: left !important;
+  }
+
+  .navbar-nav.navbar-right:last-child {
+    margin-right: -15px !important;
+  }
+
+  .navbar-right {
+    float: right !important;
+  }
+}
+
+.dashboard-nav {
+  background-color: transparent;
+  height: 60px;
+
+  .left-item {
+    text-align: center;
+    display: none;
+  }
+
+  .right-item {
+    text-align: center;
+  }
+
+  .sub-title {
+    display: none;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  @media only screen and (min-width: $screen-sm-min) {
+    height: 100px;
+
+    .title {
+      font-size: 16px;
+    }
+
+    .fa {
+      font-size: 50px;
+    }
+
+    .left-item {
+      margin-top: 10px;
+      float: left;
+      text-align: left;
+      width: 25%;
+      display: block;
+    }
+
+    .right-item {
+      float: right;
+      margin-top: 10px;
+      padding-left: 8px;
+      text-align: left;
+      width: 75%;
+    }
+
+    .item-group {
+      width: 200px;
+    }
+
+    .sub-title {
+      font-size: 10px;
+      color: #777;
+      display: block;
+    }
+  }
+
+  .nav > li.active > a,
+  .nav > li.active > a:focus {
+    color: #333;
+  }
+
+  .nav > li.active {
+    @media only screen and (min-width: $screen-sm-min) {
+      border-top: 0 solid $red-ish;
+
+      > a {
+        padding-top: 15px;
+      }
+    }
+  }
+}
+
+.nav {
+  a {
+    outline: 0;
+  }
+}
+
+.navbar-no-collapse-dropdown-fix {
+  .navbar-nav {
+    .open .dropdown-menu {
+      background-clip: padding-box;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+      font-size: 14px;
+      list-style: outside none none;
+      min-width: 160px;
+      padding: 5px 0;
+      position: absolute;
+      text-align: left;
+      top: 100%;
+      z-index: 1000;
+      display: block;
+      left: auto;
+      right: 0;
+      float: none;
+      width: auto;
+      margin-top: 0;
+
+      > li > a,
+      .dropdown-header {
+        padding: 5px 15px 5px 25px;
+      }
+
+      > li > a {
+        line-height: 20px;
+
+        &:hover,
+        &:focus {
+          background-image: none;
+        }
+      }
+    }
+  }
+}
+
+/* stylelint-enable */

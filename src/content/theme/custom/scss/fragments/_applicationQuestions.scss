@@ -1,0 +1,67 @@
+
+/**********************
+    USED ANYWHERE QUESTIONS ARE PRINTED FROM THE DATABASE
+**********************/
+
+.general-question-container {
+  padding: 14px 8px 0;
+  margin-bottom: 10px;
+}
+
+.question-error {
+  border-left: 3px solid $red-ish;
+}
+
+.question-success {
+  border-left: 3px solid $green;
+}
+
+.question-error-message {
+  text-align: center;
+  color: $red-ish;
+}
+
+.style-inputs {
+  input {
+    height: 46px;
+    border: 1px solid #aaa;
+  }
+
+  .select2-container--default .select2-selection--single {
+    padding-top: 6px;
+    padding-left: 4px;
+    height: 46px;
+  }
+
+  .select2-selection__arrow {
+    display: none;
+  }
+}
+
+.select-new-item {
+  background-color: yellow;
+  color: red;
+}
+
+.question-currency-dropdown {
+  .dropdown-menu {
+    border-radius: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .btn-block,
+    .btn {
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+
+  ul li {
+    margin-top: 2px;
+  }
+
+  ul li:first-child {
+    margin-top: 0;
+  }
+}

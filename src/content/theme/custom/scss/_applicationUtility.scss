@@ -1,0 +1,105 @@
+
+/**********************
+  UTILITY CLASSES
+**********************/
+
+.seperator-xs {
+  @media (max-width: $screen-xs-max) {
+    padding: 20px 0;
+  }
+}
+
+.seperator-sm {
+  @media (max-width: $screen-sm-max) {
+    padding: 20px 0;
+  }
+}
+
+//this should be applied to any img with img-responsive that you want to be in the center of its container
+.img-responsive-center {
+  margin: 0 auto;
+}
+
+//used to apply margins to small containers
+.responsive-margins-2 {
+  @media (max-width: $screen-sm-max) {
+    margin-left: 4%;
+    margin-right: 4%;
+  }
+}
+
+.responsive-margins-1 {
+  margin-left: 0;
+  margin-right: 0;
+
+  @media (min-width: $screen-sm-min) {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+.border-left-sm {
+  @media (min-width: $screen-sm-min) {
+    border-left: 2px solid $purple;
+  }
+}
+
+.border-left-md {
+  @media (min-width: $screen-md-min) {
+    border-left: 2px solid $purple;
+  }
+}
+
+.border-left-sm-grey {
+  @media (min-width: $screen-sm-min) {
+    border-left: 2px solid $boxBorderColor-1;
+  }
+}
+
+.border-left-md-grey {
+  @media (min-width: $screen-md-min) {
+    border-left: 2px solid $boxBorderColor-1;
+  }
+}
+
+.border-bottom-sm {
+  @media (min-width: $screen-sm-min) {
+    border-bottom: 2px solid $purple;
+  }
+}
+
+.border-bottom-sm-grey {
+  @media (min-width: $screen-sm-min) {
+    border-bottom: 2px solid $boxBorderColor-1;
+  }
+}
+
+.animate-delay-1s {
+  animation-delay: 1s;
+}
+
+.animate-delay-2s {
+  animation-delay: 2s;
+}
+
+.animate-delay-3s {
+  animation-delay: 3s;
+}
+
+.animate-delay-4s {
+  animation-delay: 4s;
+}
+
+.animate-delay-5s {
+  animation-delay: 5s;
+}

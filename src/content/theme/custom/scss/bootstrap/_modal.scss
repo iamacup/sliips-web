@@ -1,0 +1,47 @@
+
+/**********************
+  MODAL CHANGES
+**********************/
+
+@media only screen and (min-width: $screen-sm-min) {
+  .modal-open {
+    overflow: scroll;
+  }
+
+  .modal-open[style] {
+    padding-right: 0 !important;
+  }
+}
+
+.modal-header {
+  background-color: $modal-background-color;
+  border-bottom: 1px solid $modal-internal-border-color;
+}
+
+.modal-body {
+  background-color: $modal-background-color;
+}
+
+.modal-footer {
+  background-color: $modal-background-color;
+  border-top: 1px solid $modal-internal-border-color;
+}
+
+.modal-huge {
+  @media (min-width: $screen-sm-min) {
+    width: 96%;
+  }
+
+  @media (min-width: $screen-md-min) {
+    width: 90%;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    width: 80%;
+  }
+}
+
+// this stops double dark stuff happening
+.modal-backdrop + .modal-backdrop {
+  opacity: 0;
+}

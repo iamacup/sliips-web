@@ -1,0 +1,22 @@
+
+/**********************
+   FAQ
+**********************/
+
+.faq-markdown-format {
+  h2 {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  h3 {
+    padding-top: 10px;
+  }
+
+  p,
+  li {
+    color: $text-muted-1;
+    font-size: 16px;
+  }
+}
+

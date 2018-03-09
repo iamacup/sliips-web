@@ -1,0 +1,41 @@
+
+$font: 'Open Sans', sans-serif;
+
+$c1-bg: #fff;
+$c2-bg: #f9f9fa;
+$c1-color: #444;
+$c2-color: #444;
+
+$text-muted-1: #777;
+$light-text-color: #fff;
+$dark-text-color: #444;
+
+$orange: #de4a31;
+$red-ish: #bd3152;
+$green: #2ba52b;
+$dark-purple: #2c1e31;
+$medium-purple: #46013a;
+$light-purple: #9979ad;
+$purple: #6a3787;
+$purple-new-1: #67526e;
+$purple-new-2: #48384e;
+$purple-new-5: #1b0921;
+
+$boxBorderColor-1: #e6e9ed;
+$boxBorderColor-2: #d9dee4;
+$navbar-brand-color: #9e9aa9;
+$navbar-non-affix-link-and-hover-color: #ededed;
+$navbar-affix-background: #ededed;
+$navbar-affix-link-color: #222;
+$modal-background-color: #fff;
+$modal-internal-border-color: #ccc;
+$offWhiteContractBG: #fdfdfd;
+
+$screen-xs-min:              480px !default;
+$screen-sm-min:              768px !default;
+$screen-md-min:              992px !default;
+$screen-lg-min:              1200px !default;
+
+$screen-xs-max:              ($screen-sm-min - 1) !default;
+$screen-sm-max:              ($screen-md-min - 1) !default;
+$screen-md-max:              ($screen-lg-min - 1) !default;

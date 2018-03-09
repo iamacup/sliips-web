@@ -1,0 +1,171 @@
+
+/**********************
+  PAYSLIP UPLOADS
+**********************/
+
+.p-payslip-upload {
+  .z1 {
+    z-index: 30;
+  }
+
+  .z2 {
+    z-index: 20;
+  }
+
+  .z3 {
+    z-index: 10;
+  }
+
+  .progressbar {
+    margin: 0;
+    padding: 0;
+    counter-reset: step;
+  }
+
+  .progressbar ul {
+    z-index: 10;
+  }
+
+  .progressbar li {
+    list-style-type: none;
+    width: 33%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: $text-muted-1;
+  }
+
+  .progressbar li::before {
+    width: 30px;
+    height: 30px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 30px;
+    border: 2px solid $text-muted-1;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+
+  .progressbar li::after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: $text-muted-1;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+
+  .progressbar li:first-child::after {
+    content: none;
+  }
+
+  .progressbar li.active::before {
+    border-color: $dark-purple;
+  }
+
+  .progressbar li.active {
+    color: $dark-purple;
+
+    li::after {
+      background-color: $dark-purple;
+    }
+  }
+
+  .list-group-item-text {
+    padding: 0 15%;
+    color: #9591a6 !important;
+    font-size: 14px;
+
+    @media (max-width: $screen-sm-max) {
+      display: none;
+    }
+  }
+
+  .list-group-item {
+    background-color: transparent;
+    border: 1px solid $boxBorderColor-1;
+    border-style: solid none;
+    cursor: pointer;
+  }
+
+  .list-group-item-heading {
+    color: #fff !important;
+  }
+
+  .list-group-item.active {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .list-group,
+  .list-group-item {
+    border-radius: 0;
+  }
+
+  .list-group-item:active,
+  .list-group-item:hover {
+    background-color: #633663;
+  }
+
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+
+  .list-group-item:first-child {
+    border-top: none;
+  }
+
+  .list-group h4 {
+    @media (max-width: $screen-sm-max) {
+      font: 9px $font;
+      text-align: center;
+    }
+  }
+
+  .list-group-item-icon {
+    @media (max-width: $screen-sm-max) {
+      font-size: 40px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      //display: none;
+    }
+  }
+
+  .file-uploader {
+    min-height: 200px;
+    width: 100%;
+    border: 1px dashed #ccc;
+    background-color: #fdfdfd;
+    font-size: 40px;
+  }
+
+  .file-uploader-message {
+    margin-top: 86px;
+  }
+
+  .drag-enter {
+    background-color: $green;
+    border: 1px dashed black;
+  }
+
+  .file-uploader-canvas {
+    border: 1px solid black;
+    margin: 20px;
+  }
+
+  .add-sliip-canvas-width {
+    padding: 0 6%;
+
+    @media (max-width: $screen-sm-max) {
+      padding: 0 3%;
+    }
+  }
+}

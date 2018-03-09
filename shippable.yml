@@ -1,0 +1,88 @@
+language: node_js
+
+node_js:
+    - 9.2.0
+
+env:
+    - secure: fRZSI8jINlmxNlRGKhjUdtp2OwtfnLW/Hd27kow11XGXrZDK1anxNmyx9rApi02JYp2R5gwVKycSPS+MNb72Qym5QDxhUlQaNzN5ltwc7+4DKPLMAXZlaBAbx6u/z4M0aLUEV/z+ZshpXfJVfbH/RjSZBmWFdDTAMShIFx7qq2NiZjoxWLOkqfV5t5gqzRUzbMyLMODouPKe52r+vyBkVhry/N4BEH7kmkbxWK6UNFq6nSqgSvrBegPjnyywSBtvnDm56i9BQ5QD2p5Vy1TULrERt2OfsZV+Q7YhRl/OtR5oF5gFKJOiG47ijHuykTiRcctZA6zgtY+E2Gtm0rRtjg==
+
+build:
+
+  ci:
+   # we need to move everything into a new sub folder
+    - mkdir ui-git
+    - shopt -s extglob
+    - mv !(ui-git) ui-git
+
+   # pull down the config items from private repo 
+    - mkdir output
+    - pushd output
+    - git init
+    - git remote add -f origin https://helloSliips:$BBPW@bitbucket.org/sliips/sliips-web.git
+    - git config core.sparseCheckout true
+    - echo "configuration-items/" >> .git/info/sparse-checkout
+    - git pull origin $BRANCH
+    - popd
+    - mv ./output/configuration-items ./
+
+   # notification config 
+    - chmod +x configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh
+    - chmod +x configuration-items/scripts/build-and-deploy-messaging-scripts/build-url.sh
+
+   # send a nofirication
+    - "./configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh \"Starting *$REPO_FULL_NAME-$BUILD_NUMBER*\""
+
+   # deployment dependencies - we don't use the gcloud that comes with the shippable container because we can't install kubectl to it
+    - wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-184.0.0-linux-x86_64.tar.gz
+    - tar -zxf google-cloud-sdk-184.0.0-linux-x86_64.tar.gz
+    - rm google-cloud-sdk-184.0.0-linux-x86_64.tar.gz
+    - ./google-cloud-sdk/bin/gcloud components install kubectl
+
+   # these are the build the project
+    - pushd ui-git
+    - yarn install
+    - YARNBUILD=prod; if [ $BRANCH != "master" ]; then YARNBUILD=dev; fi;
+    - echo "building $YARNBUILD on yarn"
+    - yarn build:$YARNBUILD 
+    - popd
+
+  on_success:
+    # get the gcloud bin directory into a variable
+    - "export GSDKBINLOCATION=$(output=$(pwd) && echo \"$output/google-cloud-sdk/bin\")"
+
+    # send notification
+    - "./configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh \"*$REPO_FULL_NAME-$BUILD_NUMBER* - Build success, starting docker activities\""
+
+    # auth gcloud
+    - ./google-cloud-sdk/bin/gcloud auth activate-service-account shippable-full@sliips-core-project.iam.gserviceaccount.com --key-file configuration-items/kubenetes/shippable-gcloud-key/sliips-core-project.json
+    - export GOOGLE_APPLICATION_CREDENTIALS="configuration-items/kubenetes/shippable-gcloud-key/sliips-core-project.json"
+    - ./google-cloud-sdk/bin/gcloud config set compute/zone europe-west2-a
+    - ./google-cloud-sdk/bin/gcloud config set project sliips-core-project 
+    - ./google-cloud-sdk/bin/gcloud container clusters get-credentials $BRANCH-cluster-1
+    
+    # BUILD THE UI DATA IMAGE
+    - docker build -f configuration-items/environments/ui/containers/ui-data/Dockerfile -t sliips-ui-data-$BRANCH .
+    - docker tag sliips-ui-data-$BRANCH eu.gcr.io/sliips-core-project/sliips-ui-data-$BRANCH:latest
+    - docker tag sliips-ui-data-$BRANCH eu.gcr.io/sliips-core-project/sliips-ui-data-$BRANCH:$BUILD_NUMBER
+    - ./google-cloud-sdk/bin/gcloud docker -- push eu.gcr.io/sliips-core-project/sliips-ui-data-$BRANCH:latest
+    - ./google-cloud-sdk/bin/gcloud docker -- push eu.gcr.io/sliips-core-project/sliips-ui-data-$BRANCH:$BUILD_NUMBER
+    
+    # we then modify the cloud deployment file to contain our new build number and we tell google to deploy our new images
+    - sed -i "s/sliips-ui-data-$BRANCH:latest/sliips-ui-data-$BRANCH:$BUILD_NUMBER/g" configuration-items/kubenetes/$BRANCH/configuration/ui-deployment.yaml
+    - ./google-cloud-sdk/bin/kubectl apply -f configuration-items/kubenetes/$BRANCH/configuration/ui-deployment.yaml
+    - cat configuration-items/kubenetes/$BRANCH/configuration/ui-deployment.yaml
+    - sed -i "s/sliips-ui-data-$BRANCH:$BUILD_NUMBER/sliips-ui-data-$BRANCH:latest/g" configuration-items/kubenetes/$BRANCH/configuration/ui-deployment.yaml
+
+    # send notification
+    - BUILDRESWEB="$(./configuration-items/scripts/build-and-deploy-polling-scripts/poll-deployment-success.sh ui-deployment $GSDKBINLOCATION)"
+    - "./configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh \"*$REPO_FULL_NAME-$BUILD_NUMBER* - $BUILDRESWEB\""
+    - "./configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh \"*$REPO_FULL_NAME-$BUILD_NUMBER* - Finished!\""
+
+  on_failure:
+    # send notification
+    - "./configuration-items/scripts/build-and-deploy-messaging-scripts/slack-message.sh \"*$REPO_FULL_NAME-$BUILD_NUMBER* - THERE WAS A PROBLEM! DID NOT FINISH SHIPPABLE RUN\""
+
+branches:
+  only:
+    - dev
+    - master

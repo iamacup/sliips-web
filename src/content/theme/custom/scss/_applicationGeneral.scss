@@ -1,0 +1,120 @@
+
+/**********************
+  GENERAL CLASSES
+**********************/
+
+.drop-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.emphasis-section {
+  border-bottom: 2px solid #e6e9ed;
+  border-top: 2px solid #e6e9ed;
+}
+
+.emphasis-section-top {
+  border-top: 8px solid rgb(106, 55, 135);
+}
+
+.seperator {
+  padding: 20px 0;
+}
+
+.purple-banner {
+  color: #fff;
+  background-color: #351552;
+  background-image: radial-gradient(circle 800px at center 300px, #6c38a0 0, #351552 100%);
+  text-align: center;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.c1 {
+  background-color: $c1-bg;
+  color: $c1-color;
+}
+
+.c2 {
+  background-color: $c2-bg;
+  color: $c2-color;
+}
+
+.c3 {
+  background-color: $dark-purple;
+  color: #fff;
+}
+
+.page-section {
+  padding: 100px 0;
+}
+
+.header-section {
+  padding: 30px 0 50px;
+}
+
+.header-section-lg {
+  padding: 50px 0 70px;
+}
+
+.jumbo {
+  border: 1px solid #aea1b9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(53, 21, 82, 0.4);
+  position: relative;
+  padding: 12px;
+}
+
+.purple-emphasis {
+  border: 1px solid $purple;
+  box-shadow: 0 2px 10px rgba(53, 21, 82, 0.4);
+}
+
+.round-corners {
+  border-radius: 10px;
+}
+
+.box-border {
+  border: 1px solid $boxBorderColor-2;
+}
+
+.box-padding {
+  padding: 12px;
+}
+
+.blur-me {
+  filter: blur(5px);
+}
+
+.on-top {
+  z-index: 1050;
+}
+
+.no-border {
+  border: none;
+}
+
+.red-links {
+  a,
+  button {
+    color: $red-ish;
+  }
+
+  a:hover,
+  a:focus,
+  button:hover,
+  button:focus {
+    color: $orange;
+  }
+}
+
+div.hr-above::before {
+  content: ' ';
+  border: 2px solid $purple;
+  margin-bottom: 25px;
+  display: block;
+  max-width: 100px;
+}
+
+.progress-bar-purple {
+  background-color: $light-purple;
+}

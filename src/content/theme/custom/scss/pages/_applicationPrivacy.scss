@@ -1,0 +1,14 @@
+
+/**********************
+      PRIVACY-PAGE
+**********************/
+
+.p-privacy {
+  .privacyBox {
+    margin: 4px;
+
+    @media only screen and (min-width: $screen-sm-min) {
+      min-height: 200px;
+    }
+  }
+}

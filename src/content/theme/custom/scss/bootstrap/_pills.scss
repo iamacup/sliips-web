@@ -1,0 +1,59 @@
+
+/**********************
+    PILLS
+**********************/
+
+.centered-pills {
+  text-align: center;
+
+  @media only screen and (max-width: $screen-xs-min) {
+    li {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 2px 5%;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+    }
+
+    li + li {
+      margin-left: 0;
+    }
+  }
+}
+
+.centered-pills ul.nav-pills {
+  display: inline-block;
+}
+
+.centered-pills li {
+  display: inline;
+}
+
+.centered-pills a {
+  float: left;
+}
+
+.nav-pills > li > a {
+  background-color: $light-purple;
+  color: #fff;
+  font-weight: 700;
+}
+
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+  background-color: $purple;
+  color: #fff;
+  font-weight: 700;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  background-color: $purple;
+  color: #fff;
+  font-weight: 700;
+}

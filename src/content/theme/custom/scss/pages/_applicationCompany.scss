@@ -1,0 +1,135 @@
+
+/**********************
+    COMPANY-PROFILE-SPECIFICS
+**********************/
+
+.p-company {
+  .nav-search-select {
+    @media (min-width: $screen-sm-min) {
+      width: 300px;
+    }
+  }
+
+  .top-margin-temp {
+    margin-top: 60px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 0;
+    }
+  }
+
+  .navbar-company-title {
+    text-transform: none !important;
+  }
+
+  .company-profile-nav.affix-top {
+    .navbar-company-title {
+      display: none;
+    }
+  }
+
+  .small-button-margin {
+    .btn {
+      margin: 2px;
+    }
+  }
+
+  .responsive-fa {
+    font-size: 16px;
+    font-size: 2vw;
+  }
+
+  .progress-red {
+    background-color: $red-ish;
+  }
+
+  .progress-orange {
+    background-color: $orange;
+  }
+
+  .progress-green {
+    background-color: $green;
+  }
+
+  .progress {
+    margin: 0;
+    background-color: $purple;
+  }
+
+  .top-banner {
+    padding: 120px 0 160px;
+  }
+
+  .stuck-corners {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .other-benefit-top-item {
+    border-top: 8px solid #d7569c;
+    border-bottom: 8px solid #d7569c;
+  }
+
+  .other-benefit-mid-bot-item {
+    border-top: 8px solid #9979ad;
+    border-bottom: 8px solid #9979ad;
+  }
+
+  .office-perk {
+    height: 120px;
+    padding: 10px;
+    margin: 10px 5px;
+    border-top: 8px solid rgb(106, 55, 135);
+  }
+
+  .software-item,
+  .other-benefit-item {
+    height: 60px;
+    padding: 10px;
+    margin: 10px 5px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-tabs > li,
+  .nav-pills > li {
+    float: none;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    cursor: pointer;
+  }
+
+  .nav-tabs,
+  .nav-pills {
+    text-align: center;
+  }
+
+  .smaller-item {
+    background-size: cover;
+    width: 500px;
+  }
+
+  .benefit-item-text-box {
+    padding: 6px 12px;
+    margin: 10px 6px;
+    height: 120px;
+    border-top: 4px solid #ddd;
+  }
+
+  .benefit-item-text-box-base {
+    padding: 6px 12px;
+    margin: 10px 30px;
+    border-top: 4px solid #ddd;
+  }
+
+  .top-summary-box {
+    padding: 6px 12px;
+    margin: 10px 30px;
+    border-top: 8px solid rgb(106, 55, 135);
+  }
+
+  .similar-box {
+    padding: 6px 12px;
+    margin: 10px 30px;
+  }
+}

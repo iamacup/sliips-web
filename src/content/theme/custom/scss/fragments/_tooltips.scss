@@ -1,0 +1,71 @@
+
+/**********************
+  TOOLTIPS
+**********************/
+
+.tipWrapper {
+  z-index: 100;
+  cursor: help;
+  position: relative;
+  -webkit-transform: translateZ(0); /* webkit flicker fix */
+  -webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+}
+
+.tipWrapper .tooltip {
+  z-index: 100;
+  background: $purple;
+  text-align: center;
+  bottom: 100%;
+  color: #fff;
+  display: block;
+  left: -25px;
+  margin-bottom: 15px;
+  opacity: 0;
+  padding: 20px;
+  pointer-events: none;
+  position: absolute;
+  width: 200%;
+  transform: translateY(10px);
+  transition: all 0.25s ease-out;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+/* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.tipWrapper .tooltip::before {
+  bottom: -20px;
+  content: ' ';
+  display: block;
+  height: 20px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+/* CSS Triangles */
+.tipWrapper .tooltip::after {
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-top: solid $purple 10px;
+  bottom: -10px;
+  content: ' ';
+  height: 0;
+  left: 50%;
+  margin-left: -13px;
+  position: absolute;
+  width: 0;
+}
+
+.tipWrapper:hover .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* IE can just show/hide with no transition */
+.lte8 .tipWrapper .tooltip {
+  display: none;
+}
+
+.lte8 .tipWrapper:hover .tooltip {
+  display: block;
+}
