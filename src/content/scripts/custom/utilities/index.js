@@ -15,7 +15,7 @@ export function getAPIUrl() {
   if (env === 'live') {
     return 'https://api.sliips.com/';
   } else if (env === 'dev') {
-    return 'https://beta.sliips.com:5544/';
+    return 'https://beta-api.sliips.com/';
   } else if (env === 'local') {
     return 'https://local.sliips.com:8080/';
   }
