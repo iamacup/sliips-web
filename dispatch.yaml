@@ -1,0 +1,11 @@
+
+# this file has to be the same for all alumnibase-x projects OR we could move it to the default service (which right now is not google project specific)
+
+dispatch:
+  - url: "beta-www.sliips.com/*"
+    service: web-dev
+  - url: "sliips.com/*"
+    service: web-prod
+  - url: "www.sliips.com/*"
+    service: web-prod
+ 
