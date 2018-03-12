@@ -1,5 +1,5 @@
 {
-  "name": "sliips-ui",
+  "name": "sliips-web",
   "version": "1.0",
   "description": "The Sliips UI Frontend.",
   "main": "index.js",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iamacup/sliips-ui"
+    "url": "https://github.com/iamacup/sliips-web"
   },
   "keywords": [
-    "sliips.com",
-    "sliips"
+    "UI",
+    "Frontend"
   ],
   "author": "Tom Pickard <tom@tompickard.com> (https://github.com/iamacup)",
   "licenses": [
@@ -24,7 +24,7 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/iamacup/sliips-ui/issues"
+    "url": "https://github.com/iamacup/sliips-web/issues"
   },
   "homepage": "https://www.sliips.com/",
   "scripts": {
