@@ -29,8 +29,8 @@
   "homepage": "https://www.sliips.com/",
   "scripts": {
     "start": "google-app-angine-start-command",
-    "start-gce-dev": "yarn install --production=false && yarn start:dev",
-    "start-gce-prod": "yarn install --production=false && yarn start:prod",
+    "start-gce-dev": "yarn start:dev",
+    "start-gce-prod": "yarn start:prod",
     "start:local": "yarn better-npm-run start:local",
     "start:dev": "yarn better-npm-run start:dev",
     "start:prod": "yarn better-npm-run start:prod",

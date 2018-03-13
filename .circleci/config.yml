@@ -54,7 +54,7 @@ jobs:
 
       # deploy the project - we set the timeout to 20 mins in case the deploy takes a while
       - run: 
-          command: sudo ./google-cloud-sdk/bin/gcloud -q app deploy
+          command: sudo ./google-cloud-sdk/bin/gcloud --quiet app deploy app.yaml
           no_output_timeout: 1200
 
       # update the dispatch file if it exists
