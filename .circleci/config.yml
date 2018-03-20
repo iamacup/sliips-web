@@ -14,48 +14,56 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      #- restore_cache:
+      #    keys:
+      #    - v1-dependencies-{{ checksum "package.json" }}
+      #    # fallback to using the latest cache if no exact match is found
+      #    - v1-dependencies-
 
       # install the package dependencies #& use a frozen lockfile as recommended here: https://yarnpkg.com/lang/en/docs/cli/install/
       - run: yarn install #--frozen-lockfile 
 
+      # now we run the remote command which will merge our package jsons etc for the react-base package into workdir
+      - run: yarn remoteprep
+
       # save this stuff so we can speed up things next run if no changes
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      #- save_cache:
+      #    paths:
+      #      - node_modules
+      #    key: v1-dependencies-{{ checksum "package.json" }}
+
+      # copy the google deployment files into the combined project directory #
+      - run: "cp app.yaml workdir && cp Dockerfile workdir && cp .dockerignore workdir && cp dispatch.yaml workdir"
+      - run: "ls -a"
 
       # build the thing
-      - run: "[ \"$CIRCLE_BRANCH\" == \"master\" ] && yarn build:prod || yarn build:dev"
+      - run: "cd workdir && [ \"$CIRCLE_BRANCH\" == \"master\" ] && yarn build:prod || yarn build:dev"
 
       # download google cloud sdk
       - run: wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-191.0.0-linux-x86_64.tar.gz
       - run: tar -zxf google-cloud-sdk-191.0.0-linux-x86_64.tar.gz
       - run: rm google-cloud-sdk-191.0.0-linux-x86_64.tar.gz
+      - run: mv google-cloud-sdk workdir
       # we don't need kubectl on this run because we only use google app engine
       # - run: ./google-cloud-sdk/bin/gcloud components install kubectl
 
       # authenticate with google cloud
       - run: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
-      - run: sudo ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-      - run: sudo ./google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
+      - run: cd workdir && sudo ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+      - run: cd workdir && sudo ./google-cloud-sdk/bin/gcloud config set project $GCLOUD_PROJECT
 
       # rewrite the app.yaml to start prod or dev as needed
-      - run: "[ \"$CIRCLE_BRANCH\" == \"master\" ] && echo \"Do nothing\" || sed -i \"s/web-prod/web-$CIRCLE_BRANCH/g\" ./app.yaml"
-      - run: cat ./app.yaml
+      - run: "cd workdir && [ \"$CIRCLE_BRANCH\" == \"master\" ] && echo \"Do nothing\" || sed -i \"s/web-prod/web-$CIRCLE_BRANCH/g\" ./app.yaml"
+      - run: cd workdir && cat ./app.yaml
 
       # rewrite the package.json to start prod or dev as needed  
-      - run: "[ \"$CIRCLE_BRANCH\" == \"master\" ] && sed -i \"s/google-app-angine-start-command/yarn start-gce-prod/g\" ./package.json || sed -i \"s/google-app-angine-start-command/yarn start-gce-dev/g\" ./package.json"
-      - run: cat ./package.json
+      - run: "cd workdir && [ \"$CIRCLE_BRANCH\" == \"master\" ] && sed -i \"s/google-app-angine-start-command/yarn start-gce-prod/g\" ./package.json || sed -i \"s/google-app-angine-start-command/yarn start-gce-dev/g\" ./package.json"
+      - run: cd workdir && cat ./package.json
 
       # deploy the project - we set the timeout to 20 mins in case the deploy takes a while
       - run: 
-          command: sudo ./google-cloud-sdk/bin/gcloud --quiet app deploy app.yaml
+          command: cd workdir && sudo ./google-cloud-sdk/bin/gcloud --quiet app deploy app.yaml
           no_output_timeout: 1200
 
       # update the dispatch file if it exists
-      - run: "[ -f ./dispatch.yaml ] && (sudo ./google-cloud-sdk/bin/gcloud app deploy dispatch.yaml) || echo \"No dispatch file found\""
+      - run: "cd workdir && [ -f ./dispatch.yaml ] && (sudo ./google-cloud-sdk/bin/gcloud app deploy dispatch.yaml) || echo \"No dispatch file found\""
