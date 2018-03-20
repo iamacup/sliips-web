@@ -239,6 +239,9 @@
     }
   },
   "stylelint": {
+    "ignoreFiles": [
+      "src/includes/**/*"
+    ],
     "extends": "stylelint-config-standard",
     "rules": {
       "string-quotes": "single",
