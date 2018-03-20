@@ -4,13 +4,9 @@ import Helmet from 'react-helmet';
 import NavBar from '../../../../../content/components/Navigation/Composites/general';
 import Footer from '../../../../../content/components/Footers/general';
 
-import {
-  /* drawSemiCircleChart, drawWordCloud, */ drawOptionsResultChart,
-} from '../../../../../content/scripts/custom/echarts/generators';
-import {
-  renderChartToTarget, /* redrawCharts, updateChartOptions */
-} from '../../../../../content/scripts/custom/echarts/utilities';
-import /* fireDebouncedResizeEvents */ '../../../../../content/scripts/custom/utilities';
+import { drawOptionsResultChart } from '../../../../../content/scripts/custom/echarts/generators';
+import { renderChartToTarget } from '../../../../../content/scripts/custom/echarts/utilities';
+// import /* fireDebouncedResizeEvents */ '../../../../../content/scripts/custom/utilities';
 
 class Viewer extends React.PureComponent {
   componentDidMount() {
