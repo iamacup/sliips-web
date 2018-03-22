@@ -9,9 +9,7 @@ import Footer from '../../../../content/components/Footers/general';
 import WizzardPane from '../../../../content/containers/Fragments/WizzardPane';
 import fetchDataBuilder from '../../../../foundation/redux/Factories/FetchData';
 
-import {
-  dNc,
-} from '../../../../content/scripts/custom/utilities';
+import { dNc } from '../../../../content/scripts/custom/utilities';
 
 import * as storeAction from '../../../../foundation/redux/globals/DataStoreMulti/actions';
 

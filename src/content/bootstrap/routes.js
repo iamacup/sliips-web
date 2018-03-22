@@ -27,19 +27,19 @@ import LifetimeOfferBouncerPage from '../../content/containers/Pages/LifetimeOff
 import loginPage from '../../content/containers/Pages/Login';
 
 
-import companyPage, { fetchDataDescription as companyFetchDataDescription,
-  fetchLogoDescription as companyFetchLogoDescription }
+import companyPage, {
+  fetchDataDescription as companyFetchDataDescription,
+  fetchLogoDescription as companyFetchLogoDescription,
+}
   from '../../content/containers/Pages/Company';
 
-import payslipPublicPage, { companyListDataDescription as payslipPublicCompanyListDataDescription,
-  payslipNumberDataDescription as payslipPublicPayslipNumberDataDescription }
+import payslipPublicPage, {
+  companyListDataDescription as payslipPublicCompanyListDataDescription,
+  payslipNumberDataDescription as payslipPublicPayslipNumberDataDescription,
+}
   from '../../content/containers/Pages/PayslipPublic';
 
 import graphTestPage from '../../content/containers/Pages/Testing/Graphs';
-
-import UniversityAllSteps from '../../content/containers/Pages/University/allSteps';
-import UniversityFancyStep1 from '../../content/containers/Pages/University/fancyStep1';
-import UniversitySpecificStep from '../../content/containers/Pages/University/specificStep';
 
 import BenchmarkingLandingPage from '../../content/containers/Pages/Benchmarking/Landing';
 import BenchmarkingSignupPage from '../../content/containers/Pages/Benchmarking/Signup';
@@ -419,24 +419,6 @@ export default [
     path: '/tests/graphs',
     exact: true,
     component: graphTestPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/university/all-steps',
-    exact: true,
-    component: UniversityAllSteps,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/university/fancy-step-1',
-    exact: true,
-    component: UniversityFancyStep1,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/university/step/:step',
-    exact: false,
-    component: UniversitySpecificStep,
     loadData: defaultLoadFunction,
   },
   {
