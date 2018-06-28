@@ -9,3 +9,9 @@ webpack-assets.json
 webpack-stats.json
 
 *.sublime-workspace
+
+merge.js
+mergeAndRunLocal.js
+mergeSourceToWorkdir.js
+mergeWorkdirToSource.js
+workdir

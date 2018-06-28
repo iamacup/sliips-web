@@ -64,7 +64,7 @@ result.headTop.push(<link key="7" href="https://maxcdn.bootstrapcdn.com/font-awe
 result.headTop.push(<link key="8" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />);
 
 // Slider Stylesheets
-result.headTop.push(<link key="9" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css" rel="stylesheet" />);
+result.headTop.push(<link key="9" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" rel="stylesheet" />);
 
 /*
   HEAD BOTTOM SCRIPTS
@@ -115,7 +115,7 @@ result.bodyTop.push(<script key="17" src="https://ajax.googleapis.com/ajax/libs/
 result.bodyBottom.push(<script key="18" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js" />);
 
 // Slider JS
-result.bodyBottom.push(<script key="19" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.min.js" />);
+result.bodyBottom.push(<script key="19" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js" />);
 
 // PDF.JS CDN - NOTE this version must match that in the PDF reader worker definition in payslip upload
 result.bodyBottom.push(<script key="20" src="https://unpkg.com/pdfjs-dist@1.9.638/build/pdf.min.js" />);

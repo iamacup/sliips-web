@@ -52,10 +52,19 @@ yarn install
 **3. Start to run it locally (will point the api endpoint to local.sliips.com:8080):**
 
 ```bash
-yarn build:local && yarn start:local
+yarn local
 ```
 
 **To the following other options are available to start:**
+
+You will then need to run the following two commands:
+
+```bash
+yarn remoteprep
+cd workdir
+```
+
+Followed by either of these two combinations:
 
 In order for this to run locally, you will need to edit the package.json and provide a port for start:dev command under betterScripts - it will point the api endpoint to beta-api.sliips.com
 

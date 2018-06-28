@@ -2,12 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "src",
-			"file_exclude_patterns": [".DS_Store"]
-		},
-		{
-			"path": "tools",
-			"file_exclude_patterns": [".DS_Store"]
+			"path": "src/content"
 		}
 	],
 	"settings":
