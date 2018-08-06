@@ -1,4 +1,13 @@
 
+
+<div align="center">
+
+# THE SLIIPS PROJECT IS CURRENTLY DORMANT, THIS REPOSITORY IS NOT CURRENTLY BEING MAINTAINED.
+
+</div>
+
+---
+
 <div align="center">
 
   [![dependencies Status](https://david-dm.org/iamacup/sliips-web/status.svg)](https://david-dm.org/iamacup/sliips-web)
