@@ -25,6 +25,7 @@ import PAConsultingCompanyPage from '../../content/containers/Pages/CompanyProfi
 import OldBlogPage from '../../content/containers/Pages/OldBlog';
 import LifetimeOfferBouncerPage from '../../content/containers/Pages/LifetimeOfferBouncer';
 import loginPage from '../../content/containers/Pages/Login';
+import OfflinePage from '../../content/containers/Pages/SliipsOffline';
 
 
 import companyPage, {
@@ -72,364 +73,369 @@ const defaultLoadFunction = (dispatch, params, cookies) =>
 // IT IT IS NOT UNIQUE WE NEED TO DO SOMETHING ELSE AS THE KEY IN THE APP!!!!!
 
 export default [
-  {
-    path: '/',
-    exact: true,
-    component: MainPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(
-          wizzardDoFetchData(
-            cookies.authentication, 1, null, 'api/questions/getStep', {
-              groupKey: 'reduxSignupGroup',
-              groupName: 'reduxGroup-1',
-            },
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/admin/error-viewer/:id',
-    exact: false,
-    component: ErrorViewerPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(
-          errorViewerDoFetchData(
-            cookies.authentication,
-            Number.parseInt(params.id, 10),
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/login/:id',
-    exact: false,
-    component: loginPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(loginDoFetchData(cookies.authentication, params.id)),
-      ]),
-  },
-  {
-    path: '/reset-password/:id',
-    exact: false,
-    component: loginPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(loginDoFetchData(cookies.authentication, params.id)),
-      ]),
-  },
-  {
-    path: '/company-profile/:id/Acme',
-    exact: false,
-    component: AcmeCompanyPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(
-          companyDoFetchData(
-            cookies.authentication,
-            Number.parseInt(params.id, 10),
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/company-profile/:id/PA-Consulting',
-    exact: false,
-    component: PAConsultingCompanyPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(
-          companyDoFetchData(
-            cookies.authentication,
-            Number.parseInt(params.id, 10),
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/dashboard',
-    exact: true,
-    component: DashboardPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(dashboardDoFetchData(cookies.authentication)),
-      ]),
-  },
-  {
-    path: '/dashboard/industry',
-    exact: true,
-    component: DashboardPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(dashboardDoFetchData(cookies.authentication)),
-        dispatch(
-          dashboardDoFetchIndustryData(
-            cookies.authentication,
-            dashboardIndustryInitialState.metaData,
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/dashboard/company',
-    exact: true,
-    component: DashboardPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(dashboardDoFetchData(cookies.authentication)),
-        dispatch(
-          dashboardDoFetchCompanyData(
-            cookies.authentication,
-            dashboardCompanyInitialState.metaData,
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/get-started/:id',
-    exact: false,
-    component: GetStartedPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(
-          wizzardDoFetchData(cookies.authentication, Number.parseInt(params.id, 10),
-            null, 'api/wizzard/getStep', {},
-          ),
-        ),
-      ]),
-  },
-  {
-    path: '/get-started',
-    exact: true,
-    component: GetStartedPage,
-    loadData: (dispatch, params, cookies) =>
-      Promise.all([
-        dispatch(doLoginWithCookieData(cookies.authentication)),
-        dispatch(wizzardDoFetchData(cookies.authentication, 1, null, 'api/wizzard/getStep', {})),
-      ]),
-  },
-  {
-    path: '/company/:id/:name',
-    exact: false,
-    component: companyPage,
-    loadData: (dispatch, params, cookies) => {
-      const transactionData = { optionID: 'options/' + params.id };
+  // {
+  //   path: '/',
+  //   exact: true,
+  //   component: MainPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(
+  //         wizzardDoFetchData(
+  //           cookies.authentication, 1, null, 'api/questions/getStep', {
+  //             groupKey: 'reduxSignupGroup',
+  //             groupName: 'reduxGroup-1',
+  //           },
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/admin/error-viewer/:id',
+  //   exact: false,
+  //   component: ErrorViewerPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(
+  //         errorViewerDoFetchData(
+  //           cookies.authentication,
+  //           Number.parseInt(params.id, 10),
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/login/:id',
+  //   exact: false,
+  //   component: loginPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(loginDoFetchData(cookies.authentication, params.id)),
+  //     ]),
+  // },
+  // {
+  //   path: '/reset-password/:id',
+  //   exact: false,
+  //   component: loginPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(loginDoFetchData(cookies.authentication, params.id)),
+  //     ]),
+  // },
+  // {
+  //   path: '/company-profile/:id/Acme',
+  //   exact: false,
+  //   component: AcmeCompanyPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(
+  //         companyDoFetchData(
+  //           cookies.authentication,
+  //           Number.parseInt(params.id, 10),
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/company-profile/:id/PA-Consulting',
+  //   exact: false,
+  //   component: PAConsultingCompanyPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(
+  //         companyDoFetchData(
+  //           cookies.authentication,
+  //           Number.parseInt(params.id, 10),
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/dashboard',
+  //   exact: true,
+  //   component: DashboardPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(dashboardDoFetchData(cookies.authentication)),
+  //     ]),
+  // },
+  // {
+  //   path: '/dashboard/industry',
+  //   exact: true,
+  //   component: DashboardPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(dashboardDoFetchData(cookies.authentication)),
+  //       dispatch(
+  //         dashboardDoFetchIndustryData(
+  //           cookies.authentication,
+  //           dashboardIndustryInitialState.metaData,
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/dashboard/company',
+  //   exact: true,
+  //   component: DashboardPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(dashboardDoFetchData(cookies.authentication)),
+  //       dispatch(
+  //         dashboardDoFetchCompanyData(
+  //           cookies.authentication,
+  //           dashboardCompanyInitialState.metaData,
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/get-started/:id',
+  //   exact: false,
+  //   component: GetStartedPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(
+  //         wizzardDoFetchData(cookies.authentication, Number.parseInt(params.id, 10),
+  //           null, 'api/wizzard/getStep', {},
+  //         ),
+  //       ),
+  //     ]),
+  // },
+  // {
+  //   path: '/get-started',
+  //   exact: true,
+  //   component: GetStartedPage,
+  //   loadData: (dispatch, params, cookies) =>
+  //     Promise.all([
+  //       dispatch(doLoginWithCookieData(cookies.authentication)),
+  //       dispatch(wizzardDoFetchData(cookies.authentication, 1, null, 'api/wizzard/getStep', {})),
+  //     ]),
+  // },
+  // {
+  //   path: '/company/:id/:name',
+  //   exact: false,
+  //   component: companyPage,
+  //   loadData: (dispatch, params, cookies) => {
+  //     const transactionData = { optionID: 'options/' + params.id };
 
-      // we have to resolve promises in this order to make sure tha the doLoginWithCookieData does not
-      // fudge up the other calls - they conflict with eachother because of the reset effect a login has on much of the state
-      // so we need to make sure the login happens BEFORE the other things
-      return new Promise((resolve) => {
-        dispatch(doLoginWithCookieData(cookies.authentication)).then(
-          () => {
-            Promise.all([
-              dispatch(doDataTransaction(
-                companyFetchDataDescription.url,
-                companyFetchDataDescription.mainID,
-                companyFetchDataDescription.subID,
-                cookies.authentication,
-                transactionData)),
-              dispatch(doDataTransaction(
-                companyFetchLogoDescription.url,
-                companyFetchLogoDescription.mainID,
-                companyFetchLogoDescription.subID,
-                cookies.authentication,
-                transactionData)),
-            ]).then(
-              () => {
-                resolve();
-              },
-            );
-          },
-        );
-      });
-    },
-  },
-  {
-    path: '/company/:name',
-    exact: false,
-    component: companyPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/make-your-payslip-public',
-    exact: true,
-    component: payslipPublicPage,
-    loadData: (dispatch, params, cookies) => {
-      const transactionData = { };
+  //     // we have to resolve promises in this order to make sure tha the doLoginWithCookieData does not
+  //     // fudge up the other calls - they conflict with eachother because of the reset effect a login has on much of the state
+  //     // so we need to make sure the login happens BEFORE the other things
+  //     return new Promise((resolve) => {
+  //       dispatch(doLoginWithCookieData(cookies.authentication)).then(
+  //         () => {
+  //           Promise.all([
+  //             dispatch(doDataTransaction(
+  //               companyFetchDataDescription.url,
+  //               companyFetchDataDescription.mainID,
+  //               companyFetchDataDescription.subID,
+  //               cookies.authentication,
+  //               transactionData)),
+  //             dispatch(doDataTransaction(
+  //               companyFetchLogoDescription.url,
+  //               companyFetchLogoDescription.mainID,
+  //               companyFetchLogoDescription.subID,
+  //               cookies.authentication,
+  //               transactionData)),
+  //           ]).then(
+  //             () => {
+  //               resolve();
+  //             },
+  //           );
+  //         },
+  //       );
+  //     });
+  //   },
+  // },
+  // {
+  //   path: '/company/:name',
+  //   exact: false,
+  //   component: companyPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/make-your-payslip-public',
+  //   exact: true,
+  //   component: payslipPublicPage,
+  //   loadData: (dispatch, params, cookies) => {
+  //     const transactionData = { };
 
-      // we have to resolve promises in this order to make sure tha the doLoginWithCookieData does not
-      // fudge up the other calls - they conflict with eachother because of the reset effect a login has on much of the state
-      // so we need to make sure the login happens BEFORE the other things
-      return new Promise((resolve) => {
-        dispatch(doLoginWithCookieData(cookies.authentication)).then(
-          () => {
-            Promise.all([
-              dispatch(doDataTransaction(
-                payslipPublicCompanyListDataDescription.url,
-                payslipPublicCompanyListDataDescription.mainID,
-                payslipPublicCompanyListDataDescription.subID,
-                cookies.authentication,
-                transactionData)),
-              dispatch(doDataTransaction(
-                payslipPublicPayslipNumberDataDescription.url,
-                payslipPublicPayslipNumberDataDescription.mainID,
-                payslipPublicPayslipNumberDataDescription.subID,
-                cookies.authentication,
-                transactionData)),
-              dispatch(
-                wizzardDoFetchData(
-                  cookies.authentication, 1, null,
-                  'api/questions/getStep', {
-                    groupKey: 'reduxSignupGroup',
-                    groupName: 'reduxGroup-1',
-                  },
-                ),
-              ),
-            ]).then(
-              () => {
-                resolve();
-              },
-            );
-          },
-        );
-      });
-    },
-  },
-  {
-    path: '/about-us',
-    exact: true,
-    component: AboutUsPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/careers',
-    exact: true,
-    component: CareersPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/privacy',
-    exact: true,
-    component: PrivacyPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/profile',
-    exact: true,
-    component: ProfilePage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/privacy-statement',
-    exact: true,
-    component: PrivacyStatementPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/cookie-policy',
-    exact: true,
-    component: CookiePolicyPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/terms-and-conditions',
-    exact: true,
-    component: TermsAndConditionsPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/press-releases',
-    exact: true,
-    component: PressReleasesPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/faq',
-    exact: true,
-    component: FAQPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/mobile',
-    exact: true,
-    component: MobilePage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/sliips-points',
-    exact: true,
-    component: SliipsPointsPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/press',
-    exact: true,
-    component: PressPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/contact-us',
-    exact: true,
-    component: ContactUsPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/benchmarking',
-    exact: true,
-    component: BenchmarkingLandingPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/benchmarking-signup',
-    exact: true,
-    component: BenchmarkingSignupPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/benchmarking-oneoff',
-    exact: true,
-    component: BenchmarkingOneoffPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/benchmarking-monthly',
-    exact: true,
-    component: BenchmarkingMonthlyPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/blogs/:id/:name',
-    exact: false,
-    component: OldBlogPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/tests/graphs',
-    exact: true,
-    component: graphTestPage,
-    loadData: defaultLoadFunction,
-  },
-  {
-    path: '/free-lifetime-offerNov2017',
-    exact: true,
-    component: LifetimeOfferBouncerPage,
-    loadData: defaultLoadFunction,
-  },
+  //     // we have to resolve promises in this order to make sure tha the doLoginWithCookieData does not
+  //     // fudge up the other calls - they conflict with eachother because of the reset effect a login has on much of the state
+  //     // so we need to make sure the login happens BEFORE the other things
+  //     return new Promise((resolve) => {
+  //       dispatch(doLoginWithCookieData(cookies.authentication)).then(
+  //         () => {
+  //           Promise.all([
+  //             dispatch(doDataTransaction(
+  //               payslipPublicCompanyListDataDescription.url,
+  //               payslipPublicCompanyListDataDescription.mainID,
+  //               payslipPublicCompanyListDataDescription.subID,
+  //               cookies.authentication,
+  //               transactionData)),
+  //             dispatch(doDataTransaction(
+  //               payslipPublicPayslipNumberDataDescription.url,
+  //               payslipPublicPayslipNumberDataDescription.mainID,
+  //               payslipPublicPayslipNumberDataDescription.subID,
+  //               cookies.authentication,
+  //               transactionData)),
+  //             dispatch(
+  //               wizzardDoFetchData(
+  //                 cookies.authentication, 1, null,
+  //                 'api/questions/getStep', {
+  //                   groupKey: 'reduxSignupGroup',
+  //                   groupName: 'reduxGroup-1',
+  //                 },
+  //               ),
+  //             ),
+  //           ]).then(
+  //             () => {
+  //               resolve();
+  //             },
+  //           );
+  //         },
+  //       );
+  //     });
+  //   },
+  // },
+  // {
+  //   path: '/about-us',
+  //   exact: true,
+  //   component: AboutUsPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/careers',
+  //   exact: true,
+  //   component: CareersPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/privacy',
+  //   exact: true,
+  //   component: PrivacyPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/profile',
+  //   exact: true,
+  //   component: ProfilePage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/privacy-statement',
+  //   exact: true,
+  //   component: PrivacyStatementPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/cookie-policy',
+  //   exact: true,
+  //   component: CookiePolicyPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/terms-and-conditions',
+  //   exact: true,
+  //   component: TermsAndConditionsPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/press-releases',
+  //   exact: true,
+  //   component: PressReleasesPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/faq',
+  //   exact: true,
+  //   component: FAQPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/mobile',
+  //   exact: true,
+  //   component: MobilePage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/sliips-points',
+  //   exact: true,
+  //   component: SliipsPointsPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/press',
+  //   exact: true,
+  //   component: PressPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/contact-us',
+  //   exact: true,
+  //   component: ContactUsPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/benchmarking',
+  //   exact: true,
+  //   component: BenchmarkingLandingPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/benchmarking-signup',
+  //   exact: true,
+  //   component: BenchmarkingSignupPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/benchmarking-oneoff',
+  //   exact: true,
+  //   component: BenchmarkingOneoffPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/benchmarking-monthly',
+  //   exact: true,
+  //   component: BenchmarkingMonthlyPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/blogs/:id/:name',
+  //   exact: false,
+  //   component: OldBlogPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/tests/graphs',
+  //   exact: true,
+  //   component: graphTestPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '/free-lifetime-offerNov2017',
+  //   exact: true,
+  //   component: LifetimeOfferBouncerPage,
+  //   loadData: defaultLoadFunction,
+  // },
+  // {
+  //   path: '*',
+  //   component: NotFoundPage,
+  //   loadData: defaultLoadFunction,
+  // },
   {
     path: '*',
-    component: NotFoundPage,
+    component: OfflinePage,
     loadData: defaultLoadFunction,
-  },
+  }
 ];
